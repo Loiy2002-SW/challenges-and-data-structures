@@ -15,6 +15,10 @@
                 Console.WriteLine(reversedNames[i]);
             }
 
+            // Test Find Most Frequent Number method
+            int[] numbers = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1, 2, 2, 2 ,2 };
+              Console.WriteLine(FindMostFrequentNumber(numbers));
+            
 
         }
 
@@ -31,6 +35,35 @@
 
             return reversedArray;
 
+        }
+
+
+        // Find Most Frequent Number method
+        static int FindMostFrequentNumber(int[] numbers) {
+
+            Dictionary<int, int> NumbersDictionary = new Dictionary<int, int>();
+
+            foreach (int number in numbers) {
+
+                if (NumbersDictionary.ContainsKey(number))
+                    NumbersDictionary[number]++;
+                else 
+                    NumbersDictionary.Add(number, 1);
+            }
+
+            int MostFrequentNumber = numbers[0];
+            int NumberOfOccurs = 0;
+
+            foreach (var KeyValuePair in NumbersDictionary)
+            {
+                if (KeyValuePair.Value > NumberOfOccurs)
+                {
+                    NumberOfOccurs = KeyValuePair.Value;
+                    MostFrequentNumber = KeyValuePair.Key;
+                }
+            }
+
+            return MostFrequentNumber;
         }
 
 
