@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
 
-            // Test Reveres Array method
+            //A: Test Reveres Array method
             string[] names = { "Loai", "Ahmad", "Basel", "Khaled"};
 
             string[] reversedNames = ReverseArray(names);
@@ -15,14 +15,14 @@
                 Console.WriteLine(reversedNames[i]);
             }
 
-            // Test Find Most Frequent Number method
+            //B: Test Find Most Frequent Number method
             int[] numbers = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1, 2, 2, 2 ,2 };
               Console.WriteLine(FindMostFrequentNumber(numbers));
             
 
         }
 
-        // Reveres Array method
+        //A: Reveres Array method
         static string[] ReverseArray(string[] array) { 
         
             string[] reversedArray = new string[array.Length];
@@ -38,7 +38,7 @@
         }
 
 
-        // Find Most Frequent Number method
+        //B: Find Most Frequent Number method
         static int FindMostFrequentNumber(int[] numbers) {
 
             Dictionary<int, int> NumbersDictionary = new Dictionary<int, int>();
