@@ -42,32 +42,29 @@
 
 
         //B: Find Most Frequent Number method
-        static int FindMostFrequentNumber(int[] numbers) {
-
-            Dictionary<int, int> NumbersDictionary = new Dictionary<int, int>();
-
-            foreach (int number in numbers) {
-
-                if (NumbersDictionary.ContainsKey(number))
-                    NumbersDictionary[number]++;
-                else 
-                    NumbersDictionary.Add(number, 1);
+        public static int? FindMostFrequentNumber(int[] array)
+        {
+            if (array.Length == 0)
+            {
+                return null;
             }
 
-            int MostFrequentNumber = numbers[0];
-            int NumberOfOccurs = 0;
-
-            foreach (var KeyValuePair in NumbersDictionary)
+            Dictionary<int, int> counts = new Dictionary<int, int>();
+            foreach (int num in array)
             {
-                if (KeyValuePair.Value > NumberOfOccurs)
+                if (counts.ContainsKey(num))
                 {
-                    NumberOfOccurs = KeyValuePair.Value;
-                    MostFrequentNumber = KeyValuePair.Key;
+                    counts[num]++;
+                }
+                else
+                {
+                    counts[num] = 1;
                 }
             }
 
-            return MostFrequentNumber;
+            return counts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
+
 
 
     }
