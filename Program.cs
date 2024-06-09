@@ -23,18 +23,24 @@
         }
 
         //A: Reveres Array method
-        static string[] ReverseArray(string[] array) { 
-        
-            string[] reversedArray = new string[array.Length];
+        public static T[] ReverseArray<T>(T[] array)
+        {
 
-            for (int i = 0; i < array.Length; i++) { 
-            
-                reversedArray[i] = array[array.Length -1 -i];
+            int start =0;
 
+            int end = array.Length -1;
+
+            while
+             (start < end)
+            {
+                T temp = array[start];
+                array[start] = array[end];
+                array[end] = temp;
+                start++;
+                end--;
             }
 
-            return reversedArray;
-
+            return array;
         }
 
 
