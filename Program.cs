@@ -25,9 +25,7 @@
         //A: Reveres Array method
         public static T[] ReverseArray<T>(T[] array)
         {
-
             int start =0;
-
             int end = array.Length -1;
 
             while
@@ -39,7 +37,6 @@
                 start++;
                 end--;
             }
-
             return array;
         }
 
