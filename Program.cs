@@ -19,9 +19,6 @@
             int[] numbers1 = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1, 2, 2, 2, 2 };
             Console.WriteLine(FindMostFrequentNumber(numbers1));
 
-            // Test Miximum value method
-            int[] numbers2 = { -5, 0, 0, 5, 6, 90, -100, 88 };
-            Console.WriteLine(MaximumValue(numbers2));
 
 
         }
@@ -62,21 +59,7 @@
             return counts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
 
-        //Maximum value
-        public static int? MaximumValue(int[] numbers)
-        {
-            if (numbers.Length == 0)
-                return null;
-
-            int maxNumber = numbers[0];
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (numbers[i] > maxNumber)
-                    maxNumber = numbers[i];
-            }
-            return maxNumber;
-        }
+  
 
     }
 }
