@@ -45,23 +45,16 @@
         public static int? FindMostFrequentNumber(int[] array)
         {
             if (array.Length == 0)
-            {
                 return null;
-            }
-
+            
             Dictionary<int, int> counts = new Dictionary<int, int>();
             foreach (int num in array)
             {
                 if (counts.ContainsKey(num))
-                {
                     counts[num]++;
-                }
                 else
-                {
                     counts[num] = 1;
-                }
             }
-
             return counts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
 
