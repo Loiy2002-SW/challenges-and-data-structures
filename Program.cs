@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
 
-            // Test Reveres Array method
+            //A: Test Reveres Array method
             string[] names = { "Loai", "Ahmad", "Basel", "Khaled"};
 
             string[] reversedNames = ReverseArray(names);
@@ -15,56 +15,49 @@
                 Console.WriteLine(reversedNames[i]);
             }
 
-            // Test Find Most Frequent Number method
+            //B: Test Find Most Frequent Number method
             int[] numbers = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1, 2, 2, 2 ,2 };
               Console.WriteLine(FindMostFrequentNumber(numbers));
             
 
         }
 
-        // Reveres Array method
-        static string[] ReverseArray(string[] array) { 
-        
-            string[] reversedArray = new string[array.Length];
+        //A: Reveres Array method
+        public static T[] ReverseArray<T>(T[] array)
+        {
+            int start =0;
+            int end = array.Length -1;
 
-            for (int i = 0; i < array.Length; i++) { 
-            
-                reversedArray[i] = array[array.Length -1 -i];
-
-            }
-
-            return reversedArray;
-
-        }
-
-
-        // Find Most Frequent Number method
-        static int FindMostFrequentNumber(int[] numbers) {
-
-            Dictionary<int, int> NumbersDictionary = new Dictionary<int, int>();
-
-            foreach (int number in numbers) {
-
-                if (NumbersDictionary.ContainsKey(number))
-                    NumbersDictionary[number]++;
-                else 
-                    NumbersDictionary.Add(number, 1);
-            }
-
-            int MostFrequentNumber = numbers[0];
-            int NumberOfOccurs = 0;
-
-            foreach (var KeyValuePair in NumbersDictionary)
+            while
+             (start < end)
             {
-                if (KeyValuePair.Value > NumberOfOccurs)
-                {
-                    NumberOfOccurs = KeyValuePair.Value;
-                    MostFrequentNumber = KeyValuePair.Key;
-                }
+                T temp = array[start];
+                array[start] = array[end];
+                array[end] = temp;
+                start++;
+                end--;
             }
-
-            return MostFrequentNumber;
+            return array;
         }
+
+
+        //B: Find Most Frequent Number method
+        public static int? FindMostFrequentNumber(int[] array)
+        {
+            if (array.Length == 0)
+                return null;
+            
+            Dictionary<int, int> counts = new Dictionary<int, int>();
+            foreach (int num in array)
+            {
+                if (counts.ContainsKey(num))
+                    counts[num]++;
+                else
+                    counts[num] = 1;
+            }
+            return counts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
+        }
+
 
 
     }
