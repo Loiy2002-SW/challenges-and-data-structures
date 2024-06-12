@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
 
-            //A: Test Reveres Array method
+            //Challenge 1 A: Test Reveres Array method
             string[] names = { "Loai", "Ahmad", "Basel", "Khaled"};
 
             string[] reversedNames = ReverseArray(names);
@@ -15,18 +15,18 @@
                 Console.WriteLine(reversedNames[i]);
             }
 
-            //B: Test Find Most Frequent Number method
+            //Challenge 1 B: Test Find Most Frequent Number method
             int[] numbers1 = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1, 2, 2, 2, 2 };
             Console.WriteLine(FindMostFrequentNumber(numbers1));
 
-            // Test Miximum value method
+            //Challenge 2 Test Miximum value method
             int[] numbers2 = { -5, 0, 0, 5, 6, 90, -100, 88 };
             Console.WriteLine(MaximumValue(numbers2));
 
 
         }
 
-        //A: Reveres Array method
+        //Challenge 1 A: Reveres Array method
         public static T[] ReverseArray<T>(T[] array)
         {
             int start =0;
@@ -45,7 +45,7 @@
         }
 
 
-        //B: Find Most Frequent Number method
+        //Challenge 1 B: Find Most Frequent Number method
         public static int? FindMostFrequentNumber(int[] array)
         {
             if (array.Length == 0)
@@ -62,7 +62,7 @@
             return counts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
 
-        //Maximum value
+        //Challenge 2 Maximum value
         public static int? MaximumValue(int[] numbers)
         {
             if (numbers.Length == 0)
