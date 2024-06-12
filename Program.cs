@@ -1,4 +1,8 @@
-﻿namespace challenges_and_data_structures
+﻿using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text.Json.Nodes;
+
+namespace challenges_and_data_structures
 {
     internal class Program
     {
@@ -6,31 +10,48 @@
         {
 
             //Challenge 1 A: Test Reveres Array method
-            string[] names = { "Loai", "Ahmad", "Basel", "Khaled"};
+            string[] names = { "Loai", "Ahmad", "Basel", "Khaled" };
 
             string[] reversedNames = ReverseArray(names);
 
-            for (int i = 0; i < reversedNames.Length; i++)
-            {
-                Console.WriteLine(reversedNames[i]);
-            }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Reversed array of name: [{string.Join(", ", reversedNames)}]");
+            Console.WriteLine();
 
             //Challenge 1 B: Test Find Most Frequent Number method
             int[] numbers1 = { 1, 1, 2, 2, 3, 3, 3, 1, 1, 5, 5, 6, 7, 8, 2, 1, 1, 2, 2, 2, 2 };
-            Console.WriteLine(FindMostFrequentNumber(numbers1));
 
-            //Challenge 2 Test Miximum value method
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine($"Most frequent number is: {FindMostFrequentNumber(numbers1)}");
+            Console.WriteLine();
+
+            //Challenge 2: Test Miximum value method
             int[] numbers2 = { -5, 0, 0, 5, 6, 90, -100, 88 };
-            Console.WriteLine(MaximumValue(numbers2));
 
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine($"Maximum value is: {MaximumValue(numbers2)}");
+            Console.WriteLine();
+
+            //Challenge 3: Test Remove Middle Value from Array
+            int[] OddLength = { -5, -100, 70, 0, -100, 50, 6, 8, 34 };
+            int[] EvenLength = { 5, 10, 40, 66, 9, 3, 0, -16 };
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"OddLength after removal: [{string.Join(", ", RemoveMiddleValueFromArray(OddLength))}] ");
+            Console.WriteLine($"EvenLength after removal: [{string.Join(", ", RemoveMiddleValueFromArray(EvenLength))}] ");
+            Console.WriteLine();
+
+
+            Console.ResetColor();
+            Console.ReadKey(); 
 
         }
 
         //Challenge 1 A: Reveres Array method
         public static T[] ReverseArray<T>(T[] array)
         {
-            int start =0;
-            int end = array.Length -1;
+            int start = 0;
+            int end = array.Length - 1;
 
             while
              (start < end)
@@ -50,7 +71,7 @@
         {
             if (array.Length == 0)
                 return null;
-            
+
             Dictionary<int, int> counts = new Dictionary<int, int>();
             foreach (int num in array)
             {
@@ -62,7 +83,7 @@
             return counts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
         }
 
-        //Challenge 2 Maximum value
+        //Challenge 2: Maximum value
         public static int? MaximumValue(int[] numbers)
         {
             if (numbers.Length == 0)
@@ -77,6 +98,30 @@
             }
             return maxNumber;
         }
+
+        //Challenge 3: Remove Middle Value from Array
+
+        public static int[] RemoveMiddleValueFromArray(int[] numbers)
+        {
+            if(numbers.Length ==0)
+                return numbers;
+          
+            int midIndex = numbers.Length / 2;
+            int newSize = numbers.Length % 2  == 0 ? numbers.Length - 2 : numbers.Length - 1 ;
+            int[] result = new int [newSize];
+
+            for (int i = 0, j = 0; i < numbers.Length; i++)
+            { 
+                if(numbers.Length % 2 == 0 && (i == midIndex || i == midIndex - 1)){ continue;}
+
+                else if(i == midIndex){ continue;}
+
+                result[j++] = numbers[i];
+            }
+
+            return result;
+        }
+
 
     }
 }
