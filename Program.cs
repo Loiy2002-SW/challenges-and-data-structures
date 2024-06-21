@@ -111,10 +111,11 @@ namespace challenges_and_data_structures
             int[] result = new int [newSize];
 
             for (int i = 0, j = 0; i < numbers.Length; i++)
-            { 
-                if(numbers.Length % 2 == 0 && (i == midIndex || i == midIndex - 1)){ continue;}
+            {
+                // Skip the middle elements
+                if ((numbers.Length % 2 == 0 && (i == midIndex || i == midIndex - 1)) || (numbers.Length % 2 != 0 && i == midIndex))
+                    continue;
 
-                else if(i == midIndex){ continue;}
 
                 result[j++] = numbers[i];
             }
