@@ -41,7 +41,7 @@ namespace challenges_and_data_structures
             Console.WriteLine($"EvenLength after removal: [{string.Join(", ", RemoveMiddleValueFromArray(EvenLength))}] ");
             Console.WriteLine();
 
-            //Challenge 3: Test Remove Middle Value from Array
+            //Challenge 4: Test Middle Value
             int[] numbers3 = { 70, 0, -10, 5, 6, 7, 1 };
             int number = 8;
 
