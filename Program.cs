@@ -41,9 +41,17 @@ namespace challenges_and_data_structures
             Console.WriteLine($"EvenLength after removal: [{string.Join(", ", RemoveMiddleValueFromArray(EvenLength))}] ");
             Console.WriteLine();
 
+            //Challenge 3: Test Remove Middle Value from Array
+            int[] numbers3 = { 70, 0, -10, 5, 6, 7, 1 };
+            int number = 8;
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Array after insert {number}: [{string.Join(", ", MiddleValue(numbers3, number))}] ");
+            Console.WriteLine();
+
 
             Console.ResetColor();
-            Console.ReadKey(); 
+            Console.ReadKey();
 
         }
 
@@ -103,12 +111,12 @@ namespace challenges_and_data_structures
 
         public static int[] RemoveMiddleValueFromArray(int[] numbers)
         {
-            if(numbers.Length ==0)
+            if (numbers.Length == 0)
                 return numbers;
-          
+
             int midIndex = numbers.Length / 2;
-            int newSize = numbers.Length % 2  == 0 ? numbers.Length - 2 : numbers.Length - 1 ;
-            int[] result = new int [newSize];
+            int newSize = numbers.Length % 2 == 0 ? numbers.Length - 2 : numbers.Length - 1;
+            int[] result = new int[newSize];
 
             for (int i = 0, j = 0; i < numbers.Length; i++)
             {
@@ -123,6 +131,29 @@ namespace challenges_and_data_structures
             return result;
         }
 
+        //Middle Value 
 
+        public static int[] MiddleValue(int[] array, int number)
+        {
+            int middleIndex = 0;
+
+            if (array.Length %2 == 0)
+                middleIndex = array.Length / 2;
+            else
+                middleIndex = array.Length / 2 +1;
+
+            int[] result = new int[array.Length + 1];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (i < middleIndex)
+                    result[i] = array[i];
+                else if (i == middleIndex)
+                    result[i] = number;
+                else
+                    result[i + 1] = array[i];
+            }
+            return result;
+        }
     }
 }
