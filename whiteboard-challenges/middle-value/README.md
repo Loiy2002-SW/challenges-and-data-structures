@@ -4,3 +4,4 @@
 
 ## Whiteboard image:
 ![Middle Value](middle-value.png)
+
