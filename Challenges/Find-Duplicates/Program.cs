@@ -6,15 +6,24 @@ namespace challenges_and_data_structures
     {
         static void Main(string[] args)
         {
-            int[] ints = { 1, 2, 3, 4, 5, 6, 5, 2, 3, 4, 8, 9, 7, 9, 2 , 0, 0, 0};
 
-            int[] sef = FindDuplicates(ints);
+            int[] test1 = { 1, 2, 3, 1, 2, 3 };
+            Console.WriteLine($"Input: [{string.Join(",", test1)}]");
+            Console.WriteLine($"Output: [{string.Join(",", FindDuplicates(test1))}]");
 
-            for (int i = 0; i < sef.Length; i++) {
+            Console.WriteLine("======================================================");
 
-                Console.WriteLine(sef[i]);
-            }
+            int[] test2 = { 16, 8, 31, 17, 15, 23, 17, 8 };
+            Console.WriteLine($"Input: [{string.Join(",", test2)}]");
+            Console.WriteLine($"Output: [{string.Join(",", FindDuplicates(test2))}]"); 
+            
+            Console.WriteLine("======================================================");
 
+            int[] test3 = { 5, 10, 16, 20, 10, 16 };
+            Console.WriteLine($"Input: [{string.Join(",", test3)}]");
+            Console.WriteLine($"Output: [{string.Join(",", FindDuplicates(test3))}]");
+
+            Console.ReadKey();
 
         }
 
