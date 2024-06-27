@@ -35,3 +35,9 @@
 
 
 ---
+
+### Challenge 5: Find duplicates
+[**Go to Challenge README**](Challenges/Find-Duplicates/README.md)
+
+
+---
