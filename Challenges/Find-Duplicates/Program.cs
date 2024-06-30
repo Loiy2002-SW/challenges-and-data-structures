@@ -7,43 +7,66 @@ namespace challenges_and_data_structures
         static void Main(string[] args)
         {
 
-            int[] test1 = { 1, 2, 3, 1, 2, 3 };
-            Console.WriteLine($"Input: [{string.Join(",", test1)}]");
-            Console.WriteLine($"Output: [{string.Join(",", FindDuplicates(test1))}]");
+            int[] array1Test1 = { 1, 2, 3, 0 };
+            int[] array2Test1 = { 2, 3, 4, 9 };
+
+
+            Console.WriteLine($"Input: [{string.Join(",", array1Test1)}], [{string.Join(",", array2Test1)}]");
+            Console.WriteLine($"Output: [{string.Join(",", CommonElements(array1Test1, array2Test1))}]");
 
             Console.WriteLine("======================================================");
 
-            int[] test2 = { 16, 8, 31, 17, 15, 23, 17, 8 };
-            Console.WriteLine($"Input: [{string.Join(",", test2)}]");
-            Console.WriteLine($"Output: [{string.Join(",", FindDuplicates(test2))}]"); 
-            
+            int[] array1Test2 = { 79, 8, 15 };
+            int[] array2Test2 = { 23, 79, 8 };
+
+
+            Console.WriteLine($"Input: [{string.Join(",", array1Test2)}], [{string.Join(",", array2Test2)}]");
+            Console.WriteLine($"Output: [{string.Join(",", CommonElements(array1Test1, array2Test1))}]");
+
             Console.WriteLine("======================================================");
 
-            int[] test3 = { 5, 10, 16, 20, 10, 16 };
-            Console.WriteLine($"Input: [{string.Join(",", test3)}]");
-            Console.WriteLine($"Output: [{string.Join(",", FindDuplicates(test3))}]");
+            int[] array1Test3 = { 5, 10, 15, 20 };
+            int[] array2Test3 = { 10, 15, 25 };
+
+            Console.WriteLine($"Input: [{string.Join(",", array1Test3)}], [{string.Join(",", array2Test3)}]");
+            Console.WriteLine($"Output: [{string.Join(",", CommonElements(array1Test1, array2Test1))}]");
+
+            Console.WriteLine("======================================================");
 
             Console.ReadKey();
 
         }
 
-        public static int[] FindDuplicates(int[] nums)
+        public static int[] CommonElements(int[] array1, int[] array2)
         {
             Dictionary<int, int> directory = new Dictionary<int, int>();
 
-            foreach (int num in nums)
-                if (directory.ContainsKey(num))
-                    directory[num]++;
-                else
-                    directory.Add(num, 1);
+            for (int i = 0; i < array1.Length; i++)
+            {
+                if (!directory.ContainsKey(array1[i]))
+                {
+                    directory.Add(array1[i], 1);
+                }
 
-            List<int> duplicates = new List<int>();
+            }
+
+            for (int i = 0; i < array2.Length; i++)
+            {
+                if (directory.ContainsKey(array2[i]))
+                {
+                    directory[array2[i]] = 2;
+                }
+
+            }
+
+           
+            List<int> commons = new List<int>();
 
             foreach (var kvp in directory)
-                if (kvp.Value > 1)
-                    duplicates.Add(kvp.Key);
+                if (kvp.Value == 2)
+                    commons.Add(kvp.Key);
 
-            return duplicates.ToArray();
+            return commons.ToArray();
         }
 
 
